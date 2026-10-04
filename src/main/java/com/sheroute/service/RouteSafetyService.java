@@ -240,6 +240,18 @@ public class RouteSafetyService {
 
         List<CoordinateDto> samples =
                 new ArrayList<>();
+                double totalRouteLength = 0;
+
+for (int i = 1; i < routePoints.size(); i++) {
+    if (routePoints.get(i - 1) != null && routePoints.get(i) != null) {
+        totalRouteLength += distanceInMeters(
+                routePoints.get(i - 1),
+                routePoints.get(i)
+        );
+    }
+}
+
+double sampleInterval = Math.max(2000.0, totalRouteLength / 12.0);
 
         CoordinateDto previous = null;
 
@@ -265,7 +277,7 @@ public class RouteSafetyService {
                             point
                     );
 
-            if (distanceSinceLastSample >= 2000) {
+            if (distanceSinceLastSample >= sampleInterval) {
 
                 samples.add(point);
 
