@@ -1,21 +1,21 @@
 package com.sheroute.service;
 
-import com.sheroute.config.ExternalApiProperties;
-import com.sheroute.dto.CoordinateDto;
-import com.sheroute.dto.LocationDto;
-import com.sheroute.dto.RouteOptionDto;
-import com.sheroute.exception.ExternalServiceException;
-import com.sheroute.exception.NoRouteFoundException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import com.sheroute.config.ExternalApiProperties;
+import com.sheroute.dto.CoordinateDto;
+import com.sheroute.dto.LocationDto;
+import com.sheroute.dto.RouteOptionDto;
+import com.sheroute.exception.ExternalServiceException;
+import com.sheroute.exception.NoRouteFoundException;
 
 @Service
 public class PublicOsrmRoutingService implements OsrmRoutingService {
@@ -70,6 +70,7 @@ public class PublicOsrmRoutingService implements OsrmRoutingService {
                         "No driving route found between source and destination"
                 );
             }
+            System.out.println("OSRM returned routes: " + response.routes().size());
 
             List<RouteOptionDto> routes =
                     new ArrayList<>();

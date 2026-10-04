@@ -1,3 +1,6 @@
 com\sheroute\controller\RouteControllerTest.class
+com\sheroute\controller\RouteSafetyControllerTest.class
 com\sheroute\service\NominatimGeocodingServiceTest.class
+com\sheroute\service\RouteSafetyServiceTest.class
 com\sheroute\service\RouteServiceTest.class
+com\sheroute\controller\RoadSafetyControllerTest.class
